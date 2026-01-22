@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LeetCode_AC_list.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="leetcode-problems-solved-pandas">LeetCode Problems Solved (Pandas)</h2>
+<p><strong>Total Solved: 115 problems</strong> | <strong>Difficulty: 114 Easy, 1 Medium</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th style="text-align:center">Problem ID</th>
+<th style="text-align:center">Difficulty</th>
+<th style="text-align:left">Problem Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">175</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/combine-two-tables/">Combine Two Tables</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">181</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/employees-earning-more-than-their-managers/">Employees Earning More Than Their Managers</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:center">182</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/duplicate-emails/">Duplicate Emails</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:center">183</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/customers-who-never-order/">Customers Who Never Order</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align:center">196</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/delete-duplicate-emails/">Delete Duplicate Emails</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align:center">197</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/rising-temperature/">Rising Temperature</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align:center">511</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/game-play-analysis-i/">Game Play Analysis I</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td style="text-align:center">512</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/game-play-analysis-ii/">Game Play Analysis II</a></td>
+</tr>
+<tr>
+<td>9</td>
+<td style="text-align:center">577</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/employee-bonus/">Employee Bonus</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td style="text-align:center">584</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/find-customer-referee/">Find Customer Referee</a></td>
+</tr>
+<tr>
+<td>11</td>
+<td style="text-align:center">586</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/customer-placing-the-largest-number-of-orders/">Customer Placing the Largest Number of Orders</a></td>
+</tr>
+<tr>
+<td>12</td>
+<td style="text-align:center">595</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/big-countries/">Big Countries</a></td>
+</tr>
+<tr>
+<td>13</td>
+<td style="text-align:center">596</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/classes-more-than-5-students/">Classes More Than 5 Students</a></td>
+</tr>
+<tr>
+<td>14</td>
+<td style="text-align:center">597</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/friend-requests-i-overall-acceptance-rate/">Friend Requests I: Overall Acceptance Rate</a></td>
+</tr>
+<tr>
+<td>15</td>
+<td style="text-align:center">603</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/consecutive-numbers/">Consecutive Numbers</a></td>
+</tr>
+<tr>
+<td>16</td>
+<td style="text-align:center">610</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/triangle-judgement/">Triangle Judgement</a></td>
+</tr>
+<tr>
+<td>17</td>
+<td style="text-align:center">613</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/shortest-distance-in-a-line/">Shortest Distance in a Line</a></td>
+</tr>
+<tr>
+<td>18</td>
+<td style="text-align:center">619</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/big-countries/">Big Countries</a></td>
+</tr>
+<tr>
+<td>19</td>
+<td style="text-align:center">620</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/not-boring-movies/">Not Boring Movies</a></td>
+</tr>
+<tr>
+<td>20</td>
+<td style="text-align:center">1068</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/product-sales-analysis-iii/">Product Sales Analysis III</a></td>
+</tr>
+<tr>
+<td>21</td>
+<td style="text-align:center">1069</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/product-sales-analysis-iv/">Product Sales Analysis IV</a></td>
+</tr>
+<tr>
+<td>22</td>
+<td style="text-align:center">1075</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/project-employees-i/">Project Employees I</a></td>
+</tr>
+<tr>
+<td>23</td>
+<td style="text-align:center">1076</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/project-employees-ii/">Project Employees II</a></td>
+</tr>
+<tr>
+<td>24</td>
+<td style="text-align:center">1082</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/sales-analysis-i/">Sales Analysis I</a></td>
+</tr>
+<tr>
+<td>25</td>
+<td style="text-align:center">1083</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/sales-analysis-ii/">Sales Analysis II</a></td>
+</tr>
+<tr>
+<td>26</td>
+<td style="text-align:center">1084</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/sales-analysis-iii/">Sales Analysis III</a></td>
+</tr>
+<tr>
+<td>27</td>
+<td style="text-align:center">1141</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/user-activity-for-the-past-30-days-i/">User Activity for the Past 30 Days I</a></td>
+</tr>
+<tr>
+<td>28</td>
+<td style="text-align:center">1142</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/user-activity-for-the-past-30-days-ii/">User Activity for the Past 30 Days II</a></td>
+</tr>
+<tr>
+<td>29</td>
+<td style="text-align:center">1173</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/immediate-food-delivery-i/">Immediate Food Delivery I</a></td>
+</tr>
+<tr>
+<td>30</td>
+<td style="text-align:center">1179</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/reformat-department-table/">Reformat Department Table</a></td>
+</tr>
+<tr>
+<td>31</td>
+<td style="text-align:center">1211</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/queries-quality-and-percentage/">Queries Quality and Percentage</a></td>
+</tr>
+<tr>
+<td>32</td>
+<td style="text-align:center">1241</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/number-of-comments-per-post/">Number of Comments per Post</a></td>
+</tr>
+<tr>
+<td>33</td>
+<td style="text-align:center">1280</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/students-and-examinations/">Students and Examinations</a></td>
+</tr>
+<tr>
+<td>34</td>
+<td style="text-align:center">1303</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/find-the-team-size/">Find the Team Size</a></td>
+</tr>
+<tr>
+<td>35</td>
+<td style="text-align:center">1322</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/ads-performance/">Ads Performance</a></td>
+</tr>
+<tr>
+<td>36</td>
+<td style="text-align:center">1327</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/list-the-products-ordered-in-a-period/">List the Products Ordered in a Period</a></td>
+</tr>
+<tr>
+<td>37</td>
+<td style="text-align:center">1350</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/students-with-invalid-departments/">Students With Invalid Departments</a></td>
+</tr>
+<tr>
+<td>38</td>
+<td style="text-align:center">1378</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/">Replace Employee ID With The Unique Identifier</a></td>
+</tr>
+<tr>
+<td>39</td>
+<td style="text-align:center">1421</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/npv-queries/">NPV Queries</a></td>
+</tr>
+<tr>
+<td>40</td>
+<td style="text-align:center">1435</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/create-a-session-bar-chart/">Create a Session Bar Chart</a></td>
+</tr>
+<tr>
+<td>41</td>
+<td style="text-align:center">1484</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/group-sold-products-by-the-date/">Group Sold Products By The Date</a></td>
+</tr>
+<tr>
+<td>42</td>
+<td style="text-align:center">1495</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/friendly-movies-streamed-last-month/">Friendly Movies Streamed Last Month</a></td>
+</tr>
+<tr>
+<td>43</td>
+<td style="text-align:center">1511</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/customer-orders-frequency/">Customer Orders Frequency</a></td>
+</tr>
+<tr>
+<td>44</td>
+<td style="text-align:center">1517</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/find-users-with-valid-e-mails/">Find Users With Valid E-Mails</a></td>
+</tr>
+<tr>
+<td>45</td>
+<td style="text-align:center">1527</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/patients-with-a-condition/">Patients With a Condition</a></td>
+</tr>
+<tr>
+<td>46</td>
+<td style="text-align:center">1543</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/fix-product-name-format/">Fix Product Name Format</a></td>
+</tr>
+<tr>
+<td>47</td>
+<td style="text-align:center">1565</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/unique-orders-and-customers-per-month/">Unique Orders and Customers Per Month</a></td>
+</tr>
+<tr>
+<td>48</td>
+<td style="text-align:center">1571</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/warehouse-manager/">Warehouse Manager</a></td>
+</tr>
+<tr>
+<td>49</td>
+<td style="text-align:center">1587</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/bank-account-summary/">Bank Account Summary</a></td>
+</tr>
+<tr>
+<td>50</td>
+<td style="text-align:center">1607</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/sellers-with-no-sales/">Sellers With No Sales</a></td>
+</tr>
+<tr>
+<td>51</td>
+<td style="text-align:center">1623</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/all-valid-triplets-that-can-represent-a-country/">All Valid Triplets That Can Represent a Country</a></td>
+</tr>
+<tr>
+<td>52</td>
+<td style="text-align:center">1633</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/percentage-of-users-attended-a-contest/">Percentage of Users Attended a Contest</a></td>
+</tr>
+<tr>
+<td>53</td>
+<td style="text-align:center">1661</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/average-time-of-process-per-machine/">Average Time of Process per Machine</a></td>
+</tr>
+<tr>
+<td>54</td>
+<td style="text-align:center">1667</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/fix-names-in-a-table/">Fix Names in a Table</a></td>
+</tr>
+<tr>
+<td>55</td>
+<td style="text-align:center">1677</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/products-worth-over-invoices/">Product's Worth Over Invoices</a></td>
+</tr>
+<tr>
+<td>56</td>
+<td style="text-align:center">1683</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/invalid-tweets/">Invalid Tweets</a></td>
+</tr>
+<tr>
+<td>57</td>
+<td style="text-align:center">1731</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/the-number-of-employees-who-met-the-target/">The Number of Employees Who Met the Target</a></td>
+</tr>
+<tr>
+<td>58</td>
+<td style="text-align:center">1741</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/find-total-time-spent-by-each-employee/">Find Total Time Spent by Each Employee</a></td>
+</tr>
+<tr>
+<td>59</td>
+<td style="text-align:center">1777</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/products-price-for-each-store/">Product's Price for Each Store</a></td>
+</tr>
+<tr>
+<td>60</td>
+<td style="text-align:center">1789</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/primary-department-for-each-employee/">Primary Department for Each Employee</a></td>
+</tr>
+<tr>
+<td>61</td>
+<td style="text-align:center">1795</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/rearrange-products-table/">Rearrange Products Table</a></td>
+</tr>
+<tr>
+<td>62</td>
+<td style="text-align:center">1809</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/ad-free-sessions/">Ad-Free Sessions</a></td>
+</tr>
+<tr>
+<td>63</td>
+<td style="text-align:center">1821</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/find-customers-with-positive-revenue-this-year/">Find Customers With Positive Revenue this Year</a></td>
+</tr>
+<tr>
+<td>64</td>
+<td style="text-align:center">1853</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/convert-date-format/">Convert Date Format</a></td>
+</tr>
+<tr>
+<td>65</td>
+<td style="text-align:center">1890</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/the-latest-login-in-2020/">The Latest Login in 2020</a></td>
+</tr>
+<tr>
+<td>66</td>
+<td style="text-align:center">1939</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/users-that-actively-request-confirmation-messages/">Users That Actively Request Confirmation Messages</a></td>
+</tr>
+<tr>
+<td>67</td>
+<td style="text-align:center">1978</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/employees-whose-manager-left-the-company/">Employees Whose Manager Left the Company</a></td>
+</tr>
+<tr>
+<td>68</td>
+<td style="text-align:center">2026</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/low-quality-problems/">Low Quality Problems</a></td>
+</tr>
+<tr>
+<td>69</td>
+<td style="text-align:center">2072</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/the-winner-university/">The Winner University</a></td>
+</tr>
+<tr>
+<td>70</td>
+<td style="text-align:center">2082</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/the-number-of-rich-customers/">The Number of Rich Customers</a></td>
+</tr>
+<tr>
+<td>71</td>
+<td style="text-align:center">2205</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/the-number-of-users-that-are-eligible-for-discount/">The Number of Users That Are Eligible for Discount</a></td>
+</tr>
+<tr>
+<td>72</td>
+<td style="text-align:center">2230</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/the-users-that-are-eligible-for-discount/">The Users That Are Eligible for Discount</a></td>
+</tr>
+<tr>
+<td>73</td>
+<td style="text-align:center">2329</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/product-sales-analysis-iv/">Product Sales Analysis IV</a></td>
+</tr>
+<tr>
+<td>74</td>
+<td style="text-align:center">2339</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/all-the-matches-of-the-league/">All the Matches of the League</a></td>
+</tr>
+<tr>
+<td>75</td>
+<td style="text-align:center">2356</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/number-of-unique-subjects-taught-by-each-teacher/">Number of Unique Subjects Taught by Each Teacher</a></td>
+</tr>
+<tr>
+<td>76</td>
+<td style="text-align:center">2377</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/sort-the-olympic-table/">Sort the Olympic Table</a></td>
+</tr>
+<tr>
+<td>77</td>
+<td style="text-align:center">2480</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/form-a-chemical-bond/">Form a Chemical Bond</a></td>
+</tr>
+<tr>
+<td>78</td>
+<td style="text-align:center">2504</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/concatenate-the-name-and-the-department-number/">Concatenate the Name and the Department Number</a></td>
+</tr>
+<tr>
+<td>79</td>
+<td style="text-align:center">2668</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/find-latest-salaries/">Find Latest Salaries</a></td>
+</tr>
+<tr>
+<td>80</td>
+<td style="text-align:center">2669</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/count-artist-occurrences-on-spotify-ranking-list/">Count Artist Occurrences On Spotify Ranking List</a></td>
+</tr>
+<tr>
+<td>81</td>
+<td style="text-align:center">2687</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/bikes-last-time-used/">Bikes Last Time Used</a></td>
+</tr>
+<tr>
+<td>82</td>
+<td style="text-align:center">2837</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/total-traveled-distance/">Total Traveled Distance</a></td>
+</tr>
+<tr>
+<td>83</td>
+<td style="text-align:center">2853</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/highest-salaries-difference/">Highest Salaries Difference</a></td>
+</tr>
+<tr>
+<td>84</td>
+<td style="text-align:center">2877</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/create-a-dataframe-from-list/">Create a DataFrame from List</a></td>
+</tr>
+<tr>
+<td>85</td>
+<td style="text-align:center">2878</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/get-the-size-of-a-dataframe/">Get the Size of a DataFrame</a></td>
+</tr>
+<tr>
+<td>86</td>
+<td style="text-align:center">2879</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/display-the-first-three-rows/">Display the First Three Rows</a></td>
+</tr>
+<tr>
+<td>87</td>
+<td style="text-align:center">2880</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/select-data/">Select Data</a></td>
+</tr>
+<tr>
+<td>88</td>
+<td style="text-align:center">2881</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/create-a-new-column/">Create a New Column</a></td>
+</tr>
+<tr>
+<td>89</td>
+<td style="text-align:center">2882</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/drop-duplicate-rows/">Drop Duplicate Rows</a></td>
+</tr>
+<tr>
+<td>90</td>
+<td style="text-align:center">2883</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/drop-missing-data/">Drop Missing Data</a></td>
+</tr>
+<tr>
+<td>91</td>
+<td style="text-align:center">2884</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/modify-columns/">Modify Columns</a></td>
+</tr>
+<tr>
+<td>92</td>
+<td style="text-align:center">2885</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/rename-columns/">Rename Columns</a></td>
+</tr>
+<tr>
+<td>93</td>
+<td style="text-align:center">2886</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/change-data-type/">Change Data Type</a></td>
+</tr>
+<tr>
+<td>94</td>
+<td style="text-align:center">2887</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/fill-missing-data/">Fill Missing Data</a></td>
+</tr>
+<tr>
+<td>95</td>
+<td style="text-align:center">2888</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/reshape-data-concatenate/">Reshape Data: Concatenate</a></td>
+</tr>
+<tr>
+<td>96</td>
+<td style="text-align:center">2889</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/reshape-data-pivot/">Reshape Data: Pivot</a></td>
+</tr>
+<tr>
+<td>97</td>
+<td style="text-align:center">2890</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/reshape-data-melt/">Reshape Data: Melt</a></td>
+</tr>
+<tr>
+<td>98</td>
+<td style="text-align:center">2891</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/method-chaining/">Method Chaining</a></td>
+</tr>
+<tr>
+<td>99</td>
+<td style="text-align:center">2985</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/calculate-compressed-mean/">Calculate Compressed Mean</a></td>
+</tr>
+<tr>
+<td>100</td>
+<td style="text-align:center">2987</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/find-expensive-cities/">Find Expensive Cities</a></td>
+</tr>
+<tr>
+<td>101</td>
+<td style="text-align:center">2990</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/loan-types/">Loan Types</a></td>
+</tr>
+<tr>
+<td>102</td>
+<td style="text-align:center">3051</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/find-candidates-for-data-scientist-position/">Find Candidates for Data Scientist Position</a></td>
+</tr>
+<tr>
+<td>103</td>
+<td style="text-align:center">3053</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/classifying-triangles-by-lengths/">Classifying Triangles by Lengths</a></td>
+</tr>
+<tr>
+<td>104</td>
+<td style="text-align:center">3059</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/find-all-unique-email-domains/">Find All Unique Email Domains</a></td>
+</tr>
+<tr>
+<td>105</td>
+<td style="text-align:center">3150</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/invalid-tweets-ii/">Invalid Tweets II</a></td>
+</tr>
+<tr>
+<td>106</td>
+<td style="text-align:center">3172</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/second-day-verification/">Second Day Verification</a></td>
+</tr>
+<tr>
+<td>107</td>
+<td style="text-align:center">3198</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/find-cities-in-each-state/">Find Cities in Each State</a></td>
+</tr>
+<tr>
+<td>108</td>
+<td style="text-align:center">3246</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/premier-league-table-ranking/">Premier League Table Ranking</a></td>
+</tr>
+<tr>
+<td>109</td>
+<td style="text-align:center">3358</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/books-with-null-ratings/">Books with NULL Ratings</a></td>
+</tr>
+<tr>
+<td>110</td>
+<td style="text-align:center">3415</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/find-products-with-three-consecutive-digits/">Find Products with Three Consecutive Digits</a></td>
+</tr>
+<tr>
+<td>111</td>
+<td style="text-align:center">3436</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/find-valid-emails/">Find Valid Emails</a></td>
+</tr>
+<tr>
+<td>112</td>
+<td style="text-align:center">3465</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/find-products-with-valid-serial-numbers/">Find Products with Valid Serial Numbers</a></td>
+</tr>
+<tr>
+<td>113</td>
+<td style="text-align:center">3570</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/find-books-with-no-available-copies/">Find Books with No Available Copies</a></td>
+</tr>
+<tr>
+<td>114</td>
+<td style="text-align:center">3642</td>
+<td style="text-align:center">Easy</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/find-books-with-polarized-opinions/">Find Books with Polarized Opinions</a></td>
+</tr>
+<tr>
+<td>115</td>
+<td style="text-align:center">176</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:left"><a href="https://leetcode.com/problems/second-highest-salary/">Second Highest Salary</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-how-to-aggregate-data-in-pandas">1. how to aggregate data in pandas?</h4>
+<ul>
+<li>use <code>groupby()</code> to group the data by a column</li>
+<li>use <code>agg()</code> to aggregate the data by a column</li>
+<li>use <code>size()</code> to get the number of rows in each group</li>
+<li>use <code>reset_index()</code> to convert the Series to a DataFrame</li>
+</ul>
+<pre class="hljs"><code><div>df.groupby(<span class="hljs-string">'column'</span>).agg({<span class="hljs-string">'other_column'</span>: <span class="hljs-string">'mean'</span>}) <span class="hljs-comment"># mean, median, sum, size(all values including null values), count(all non-null values), max, min, first(the first value), last(the last value)</span>
+df.groupby(<span class="hljs-string">"class"</span>).size().reset_index(name=<span class="hljs-string">'count'</span>) <span class="hljs-comment"># reset_index() is used to convert the Series to a DataFrame</span>
+df[<span class="hljs-string">"count"</span>].max() <span class="hljs-comment"># get the maximum value of the "count" column, it is not a dataframe but a value</span>
+
+<span class="hljs-comment"># multiple aggregations and custom aggregation functions with rename for the columns</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">queries_stats</span><span class="hljs-params">(queries: pd.DataFrame)</span> -&gt; pd.DataFrame:</span>
+    queries[<span class="hljs-string">"quality_ratio"</span>] = queries[<span class="hljs-string">"rating"</span>] / queries[<span class="hljs-string">"position"</span>]
+    queries[<span class="hljs-string">"is_poor"</span>] = queries[<span class="hljs-string">"rating"</span>] &lt; <span class="hljs-number">3</span>
+
+    filtered = queries.groupby(<span class="hljs-string">"query_name"</span>).agg(
+        quality=(<span class="hljs-string">"quality_ratio"</span>, <span class="hljs-string">"mean"</span>),
+        poor_query_percentage=(<span class="hljs-string">"is_poor"</span>, <span class="hljs-keyword">lambda</span> x: x.sum() / x.count() * <span class="hljs-number">100</span>)
+    ).round(<span class="hljs-number">2</span>)
+
+    <span class="hljs-keyword">return</span> filtered.reset_index()
+
+<span class="hljs-comment"># Use lambda function to create a new column with the percentage of poor queries</span>
+<span class="hljs-comment"># x.sum() is used to count the number of True values in the "is_poor" column</span>
+<span class="hljs-comment"># x.count() is used to count the number of values in the "is_poor" column</span>
+<span class="hljs-comment"># lambda x: x.sum() / x.count() * 100 is used to calculate the percentage of poor queries</span>
+<span class="hljs-comment"># round(2) is used to round the result to 2 decimal places (for two columns, the entire dataframe will be rounded to 2 decimal places)</span>
+<span class="hljs-comment"># reset_index() is used to convert the Series to a DataFrame</span>
+<span class="hljs-comment"># quality_ratio is the mean of the "quality_ratio" column</span>
+<span class="hljs-comment"># poor_query_percentage is the percentage of poor queries</span>
+<span class="hljs-comment"># query_name is the name of the query</span>
+
+</div></code></pre>
+<h4 id="2-how-to-merge-data-in-pandas">2. how to merge data in pandas?</h4>
+<pre class="hljs"><code><div>df.merge(other_df, on=<span class="hljs-string">'key'</span>, how=<span class="hljs-string">"left"</span>)
+df.merge(other_df, left_on=<span class="hljs-string">'key_a'</span>, right_on=<span class="hljs-string">'key_b'</span>, how=<span class="hljs-string">"left"</span>) <span class="hljs-comment"># left_on and right_on are used to specify the columns to merge on</span>
+df.merge(df, on=<span class="hljs-string">"key"</span>, how=<span class="hljs-string">"left"</span>, suffixes=(<span class="hljs-string">"_left"</span>, <span class="hljs-string">"_right"</span>)) <span class="hljs-comment"># suffixes are used to specify the suffixes of the columns to merge on (self-join)</span>
+</div></code></pre>
+<h4 id="3-how-to-sort-data-in-pandas">3. how to sort data in pandas?</h4>
+<pre class="hljs"><code><div>df.sort_values(<span class="hljs-string">'column'</span>, ascending=<span class="hljs-literal">False</span>, inplace=<span class="hljs-literal">True</span>)
+df.sort_values([<span class="hljs-string">'column1'</span>, <span class="hljs-string">'column2'</span>], ascending=[<span class="hljs-literal">False</span>, <span class="hljs-literal">True</span>], inplace=<span class="hljs-literal">True</span>)
+df.sort_values(by=[<span class="hljs-string">'column1'</span>, <span class="hljs-string">'column2'</span>], ascending=[<span class="hljs-literal">False</span>, <span class="hljs-literal">True</span>], inplace=<span class="hljs-literal">True</span>) <span class="hljs-comment"># same as above</span>
+</div></code></pre>
+<h4 id="4-how-to-filter-data-in-pandas">4. how to filter data in pandas?</h4>
+<pre class="hljs"><code><div>df[df[<span class="hljs-string">'column'</span>] &gt; value]
+df[(df[<span class="hljs-string">'column1'</span>] &gt; value1) <span class="hljs-keyword">and</span> (df[<span class="hljs-string">'column2'</span>] &gt; value2)] <span class="hljs-comment"># filter by multiple conditions</span>
+</div></code></pre>
+<h4 id="5-how-to-rename-columns-in-pandas">5. how to rename columns in pandas?</h4>
+<pre class="hljs"><code><div>df.rename(columns={<span class="hljs-string">'old'</span>: <span class="hljs-string">'new'</span>}, inplace=<span class="hljs-literal">True</span>) <span class="hljs-comment"># don't forget to add columns={'old': 'new'} to save the changes</span>
+</div></code></pre>
+<h4 id="6-how-to-add-and-shift-columns-in-pandas">6. how to add and shift columns in pandas?</h4>
+<pre class="hljs"><code><div>df[<span class="hljs-string">'new_column'</span>] = value <span class="hljs-comment"># add a new column</span>
+df[<span class="hljs-string">'new_column'</span>] = df[<span class="hljs-string">'column'</span>] + <span class="hljs-number">1</span> <span class="hljs-comment"># add the value of the "column" column to the "new_column" column</span>
+df[<span class="hljs-string">'new_column'</span>] = df[<span class="hljs-string">'column'</span>].shift(<span class="hljs-number">1</span>) <span class="hljs-comment"># shift the value of the "column" column to the "new_column" column (get the previous value)</span>
+df[<span class="hljs-string">'new_column'</span>] = df[<span class="hljs-string">'column'</span>].shift(<span class="hljs-number">-1</span>) <span class="hljs-comment"># shift the value of the "column" column to the "new_column" column (get the next value)</span>
+</div></code></pre>
+<h4 id="7-how-to-compare-timedelta-in-pandas-pdtodatetime-pdtimedeltadays1-pdstrftime">7. how to compare Timedelta in pandas? (pd.to_datetime(), pd.Timedelta(days=1), pd.strftime())</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># 1. how to compare Timedelta in pandas?</span>
+weather[<span class="hljs-string">"record_date"</span>] - weather[<span class="hljs-string">"previous_date"</span>] == pd.Timedelta(days=<span class="hljs-number">1</span>) <span class="hljs-comment"># compare the value of the "record_date" column to the "previous_date" column (get the difference)    </span>
+<span class="hljs-comment"># convert date column to datetime in pandas</span>
+weather[<span class="hljs-string">"record_date"</span>] = pd.to_datetime(weather[<span class="hljs-string">"record_date"</span>])
+weather[<span class="hljs-string">"previous_date"</span>] = pd.to_datetime(weather[<span class="hljs-string">"previous_date"</span>])
+
+<span class="hljs-comment"># 2. how to use dt.day, dt.month, dt.year, dt.hour, dt.minute, dt.second in pandas?</span>
+weather[<span class="hljs-string">"record_date"</span>] = pd.to_datetime(weather[<span class="hljs-string">"record_date"</span>])
+
+weather[<span class="hljs-string">"record_date"</span>].dt.day <span class="hljs-comment"># get the day of the week</span>
+weather[<span class="hljs-string">"record_date"</span>].dt.month <span class="hljs-comment"># get the month of the year</span>
+weather[<span class="hljs-string">"record_date"</span>].dt.year <span class="hljs-comment"># get the year of the month</span>
+weather[<span class="hljs-string">"record_date"</span>].dt.hour <span class="hljs-comment"># get the hour of the day</span>
+weather[<span class="hljs-string">"record_date"</span>].dt.minute <span class="hljs-comment"># get the minute of the hour</span>
+weather[<span class="hljs-string">"record_date"</span>].dt.second <span class="hljs-comment"># get the second of the minute</span>
+
+<span class="hljs-comment"># 3. how to use pd.strftime() in pandas?</span>
+dt = pd.to_datetime(<span class="hljs-string">"2000-01-16 14:30:45"</span>)
+
+dt.strftime(<span class="hljs-string">"%Y-%m-%d"</span>)       <span class="hljs-comment"># '2000-01-16'</span>
+dt.strftime(<span class="hljs-string">"%Y-%m"</span>)          <span class="hljs-comment"># '2000-01'</span>
+dt.strftime(<span class="hljs-string">"%d/%m/%Y"</span>)       <span class="hljs-comment"># '16/01/2000'</span>
+dt.strftime(<span class="hljs-string">"%B %d, %Y"</span>)      <span class="hljs-comment"># 'January 09, 2000'</span>
+dt.strftime(<span class="hljs-string">"%B %-d, %Y"</span>)     <span class="hljs-comment"># 'January 9, 2000' %-d means no leading zero</span>
+dt.strftime(<span class="hljs-string">"%Y-%m-%d %H:%M"</span>) <span class="hljs-comment"># '2000-01-16 14:30'</span>
+dt.strftime(<span class="hljs-string">"%I:%M %p"</span>)       <span class="hljs-comment"># '02:30 PM'</span>
+dt.strftime(<span class="hljs-string">"%A"</span>)             <span class="hljs-comment"># 'Sunday'</span>
+<span class="hljs-comment"># A -- day of the week (full name) Monday, Tuesday, Wednesday, etc.</span>
+<span class="hljs-comment"># B -- month of the year (full name) January, February, March, etc.</span>
+<span class="hljs-comment"># C -- day of the month</span>
+<span class="hljs-comment"># D -- day of the year</span>
+
+
+<span class="hljs-comment">## to period</span>
+s = pd.to_datetime(pd.Series([<span class="hljs-string">"2000-01-16"</span>, <span class="hljs-string">"2000-02-18"</span>]))
+
+s.dt.to_period(<span class="hljs-string">"M"</span>).astype(str)  <span class="hljs-comment"># ['2000-01', '2000-02']</span>
+s.dt.to_period(<span class="hljs-string">"Y"</span>).astype(str)  <span class="hljs-comment"># ['2000', '2000']</span>
+s.dt.to_period(<span class="hljs-string">"D"</span>).astype(str)  <span class="hljs-comment"># ['2000-01-16', '2000-02-18']</span>
+
+</div></code></pre>
+<p><img src="./img/strftime.png" alt="strftime"></p>
+<h4 id="8-how-drop-duplicates-in-pandas">8. how drop duplicates in pandas?</h4>
+<pre class="hljs"><code><div>df.drop_duplicates(subset=[<span class="hljs-string">'column1'</span>, <span class="hljs-string">'column2'</span>], keep=<span class="hljs-string">'first'</span>, inplace=<span class="hljs-literal">True</span>) <span class="hljs-comment"># drop duplicates by multiple columns, keep the first occurrence</span>
+<span class="hljs-comment"># subset is used to specify the columns to drop duplicates on</span>
+<span class="hljs-comment"># keep can be 'first', 'last', False</span>
+<span class="hljs-comment"># False means drop all duplicates</span>
+<span class="hljs-comment"># 'first' means keep the first occurrence</span>
+<span class="hljs-comment"># 'last' means keep the last occurrence</span>
+</div></code></pre>
+<h4 id="9-how-to-convert-data-type-in-pandas">9. how to convert data type in pandas?</h4>
+<pre class="hljs"><code><div>df[<span class="hljs-string">'column'</span>] = df[<span class="hljs-string">'column'</span>].astype(<span class="hljs-string">'int'</span>) <span class="hljs-comment"># convert the data type of the "column" column to int</span>
+df[<span class="hljs-string">'column'</span>] = df[<span class="hljs-string">'column'</span>].astype(<span class="hljs-string">'float'</span>) <span class="hljs-comment"># convert the data type of the "column" column to float</span>
+df[<span class="hljs-string">'column'</span>] = df[<span class="hljs-string">'column'</span>].astype(<span class="hljs-string">'str'</span>) <span class="hljs-comment"># convert the data type of the "column" column to str</span>
+df[<span class="hljs-string">'column'</span>] = df[<span class="hljs-string">'column'</span>].astype(<span class="hljs-string">'bool'</span>) <span class="hljs-comment"># convert the data type of the "column" column to bool</span>
+df[<span class="hljs-string">'column'</span>] = df[<span class="hljs-string">'column'</span>].astype(<span class="hljs-string">'datetime'</span>) <span class="hljs-comment"># convert the data type of the "column" column to datetime</span>
+</div></code></pre>
+<h4 id="10-how-to-use-isin-in-pandas">10. how to use isin() in pandas?</h4>
+<pre class="hljs"><code><div>df[df[<span class="hljs-string">'column'</span>].isin(df[<span class="hljs-string">'other_column'</span>])] <span class="hljs-comment"># filter the data by multiple values</span>
+<span class="hljs-comment"># isin() is used to check if the value of the "column" column is in the "other_column" column</span>
+</div></code></pre>
+<h4 id="11-how-to-use-seriesdiff-in-pandas-same-for-shift-cumsum">11. how to use Series.diff() in pandas? (same for shift(), cumsum())</h4>
+<pre class="hljs"><code><div>df[<span class="hljs-string">'column'</span>].diff() <span class="hljs-comment"># get the difference between the current value and the previous value</span>
+
+Use diff() 
+s = pd.Series([<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">7</span>, <span class="hljs-number">10</span>])
+s.diff()
+
+<span class="hljs-comment"># 0    NaN      # No previous element</span>
+<span class="hljs-comment"># 1    3.0      # 4 - 1 = 3</span>
+<span class="hljs-comment"># 2    3.0      # 7 - 4 = 3</span>
+<span class="hljs-comment"># 3    3.0      # 10 - 7 = 3</span>
+
+s = pd.Series([<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>])
+
+s.shift(<span class="hljs-number">1</span>)    <span class="hljs-comment"># [NaN, 10, 20]</span>
+s.cumsum()    <span class="hljs-comment"># [10, 30, 60]</span>
+</div></code></pre>
+<h4 id="12-how-to-use-pivot-and-pivottable-in-pandas">12. how to use pivot() and pivot_table() in pandas?</h4>
+<pre class="hljs"><code><div>df = pd.DataFrame({
+    <span class="hljs-string">"id"</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>],
+    <span class="hljs-string">"month"</span>: [<span class="hljs-string">"Jan"</span>, <span class="hljs-string">"Feb"</span>, <span class="hljs-string">"Jan"</span>],
+    <span class="hljs-string">"revenue"</span>: [<span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-number">150</span>]
+})
+
+<span class="hljs-comment"># Long format:</span>
+<span class="hljs-comment">#    id  month  revenue</span>
+<span class="hljs-comment"># 0   1    Jan      100</span>
+<span class="hljs-comment"># 1   1    Feb      200</span>
+<span class="hljs-comment"># 2   2    Jan      150</span>
+
+df.pivot(index=<span class="hljs-string">"id"</span>, columns=<span class="hljs-string">"month"</span>, values=<span class="hljs-string">"revenue"</span>).reset_index() <span class="hljs-comment"># reset the index to get the original index</span>
+
+<span class="hljs-comment"># Wide format:</span>
+<span class="hljs-comment"># month  Feb    Jan</span>
+<span class="hljs-comment"># id              </span>
+<span class="hljs-comment"># 1      200.0  100.0</span>
+<span class="hljs-comment"># 2      NaN    150.0</span>
+
+
+df.pivot_table(index=<span class="hljs-string">'index'</span>, columns=<span class="hljs-string">'column'</span>, values=[<span class="hljs-string">'value1'</span>, <span class="hljs-string">'value2'</span>], aggfunc=[<span class="hljs-string">'mean'</span>, <span class="hljs-string">'sum'</span>]) <span class="hljs-comment"># pivot the data by the "index" column and the "column" column, pivot_table can aggregate the data by multiple columns</span>
+<span class="hljs-comment"># index is used to specify the column to pivot on</span>
+<span class="hljs-comment"># columns is used to specify the column to pivot on</span>
+<span class="hljs-comment"># values is used to specify the column to pivot on</span>
+<span class="hljs-comment"># aggfunc is used to specify the aggregation function</span>
+<span class="hljs-comment"># aggfunc can be 'mean', 'sum', 'min', 'max', 'count', 'std', 'var'</span>
+</div></code></pre>
+<h4 id="13-how-to-use-map-in-column-to-replace-the-values">13. how to use map() in column to replace the values?</h4>
+<pre class="hljs"><code><div>df[<span class="hljs-string">'column'</span>] = df[<span class="hljs-string">'column'</span>].map({<span class="hljs-string">'old'</span>: <span class="hljs-string">'new'</span>}) <span class="hljs-comment"># replace the values of the "column" column with the "new" value</span>
+
+<span class="hljs-comment"># e.g. map True to "Yes" and False to "No"</span>
+triangle[<span class="hljs-string">"triangle"</span>] = (
+    (triangle[<span class="hljs-string">"x"</span>] + triangle[<span class="hljs-string">"y"</span>] &gt; triangle[<span class="hljs-string">"z"</span>]) &amp;
+    (triangle[<span class="hljs-string">"x"</span>] + triangle[<span class="hljs-string">"z"</span>] &gt; triangle[<span class="hljs-string">"y"</span>]) &amp;
+    (triangle[<span class="hljs-string">"y"</span>] + triangle[<span class="hljs-string">"z"</span>] &gt; triangle[<span class="hljs-string">"x"</span>])
+).map({<span class="hljs-literal">True</span>: <span class="hljs-string">"Yes"</span>, <span class="hljs-literal">False</span>: <span class="hljs-string">"No"</span>})
+
+[<span class="hljs-literal">True</span>, <span class="hljs-literal">False</span>, <span class="hljs-literal">True</span>].map({<span class="hljs-literal">True</span>: <span class="hljs-string">"Yes"</span>, <span class="hljs-literal">False</span>: <span class="hljs-string">"No"</span>}) <span class="hljs-comment"># ["Yes", "No", "Yes"]</span>
+</div></code></pre>
+<h4 id="14-the-difference-between-size-and-count-in-pandasgroupby">14. the difference between size() and count() in pandas/groupby()?</h4>
+<pre class="hljs"><code><div>df = pd.DataFrame({
+    <span class="hljs-string">"a"</span>: [<span class="hljs-number">1</span>, <span class="hljs-literal">None</span>, <span class="hljs-number">3</span>],
+    <span class="hljs-string">"b"</span>: [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-literal">None</span>]
+})
+
+df.size     <span class="hljs-comment"># 6 (3 rows × 2 cols) as an attribute of the dataframe</span>
+df.count()  <span class="hljs-comment"># Series: a=2, b=2 (non-null per column)</span>
+
+
+<span class="hljs-comment"># size() and count() are different in groupby()</span>
+df = pd.DataFrame({
+    <span class="hljs-string">"group"</span>: [<span class="hljs-string">"A"</span>, <span class="hljs-string">"A"</span>, <span class="hljs-string">"B"</span>],
+    <span class="hljs-string">"value"</span>: [<span class="hljs-number">1</span>, <span class="hljs-literal">None</span>, <span class="hljs-number">3</span>]
+})
+
+df.groupby(<span class="hljs-string">"group"</span>).size()
+<span class="hljs-comment"># group</span>
+<span class="hljs-comment"># A    2</span>
+<span class="hljs-comment"># B    1</span>
+<span class="hljs-comment"># (counts all rows per group)</span>
+
+df.groupby(<span class="hljs-string">"group"</span>).count()
+<span class="hljs-comment"># group  value</span>
+<span class="hljs-comment"># A      1      (skips None)</span>
+<span class="hljs-comment"># B      1</span>
+
+df.groupby(<span class="hljs-string">"group"</span>).agg({<span class="hljs-string">"value"</span>: <span class="hljs-string">"nunique"</span>}) <span class="hljs-comment"># count the number of unique values in the "value" column </span>
+<span class="hljs-comment"># group  value</span>
+<span class="hljs-comment"># A      1      (counts the number of unique values in the "value" column)</span>
+<span class="hljs-comment"># B      1</span>
+</div></code></pre>
+<h4 id="15-different-ways-to-write-a-groupby">15. different ways to write a groupby()?</h4>
+<pre class="hljs"><code><div>sales.groupby(<span class="hljs-string">"seller_id"</span>)[<span class="hljs-string">"price"</span>].sum()
+sales.groupby(<span class="hljs-string">"seller_id"</span>).agg({<span class="hljs-string">"price"</span>: <span class="hljs-string">"sum"</span>})
+sales.groupby(<span class="hljs-string">"seller_id"</span>)[<span class="hljs-string">"price"</span>].agg(<span class="hljs-string">"sum"</span>) <span class="hljs-comment"># same as sales.groupby("seller_id")["price"].sum()</span>
+</div></code></pre>
+<h4 id="16-pandas-broadcasting-for-dataframe">16. pandas broadcasting for dataframe?</h4>
+<pre class="hljs"><code><div>s = pd.Series([<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>])
+
+<span class="hljs-comment"># Arithmetic</span>
+s + <span class="hljs-number">5</span>     <span class="hljs-comment"># [15, 25, 35]</span>
+s - <span class="hljs-number">5</span>     <span class="hljs-comment"># [5, 15, 25]</span>
+s * <span class="hljs-number">2</span>     <span class="hljs-comment"># [20, 40, 60]</span>
+s / <span class="hljs-number">10</span>    <span class="hljs-comment"># [1.0, 2.0, 3.0]</span>
+
+<span class="hljs-comment"># Comparison (returns Boolean Series)</span>
+s &gt; <span class="hljs-number">15</span>    <span class="hljs-comment"># [False, True, True]</span>
+s &lt; <span class="hljs-number">25</span>    <span class="hljs-comment"># [True, True, False]</span>
+s == <span class="hljs-number">20</span>   <span class="hljs-comment"># [False, True, False]</span>
+</div></code></pre>
+<h4 id="17-how-to-use-na-related-functions-in-pandas">17. how to use na-related functions in pandas?</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># check if the values are NaN or not</span>
+s = pd.Series([<span class="hljs-number">1</span>, <span class="hljs-literal">None</span>, <span class="hljs-number">3</span>, <span class="hljs-literal">None</span>])
+
+s.isna()     <span class="hljs-comment"># [False, True, False, True]</span>
+s.isnull()   <span class="hljs-comment"># [False, True, False, True] same as s.isna()</span>
+s.notna()    <span class="hljs-comment"># [True, False, True, False]</span>
+s.notnull()  <span class="hljs-comment"># [True, False, True, False] same as s.notna()</span>
+
+
+s = pd.Series([<span class="hljs-number">1</span>, <span class="hljs-literal">None</span>, <span class="hljs-number">3</span>, <span class="hljs-literal">None</span>])
+<span class="hljs-comment"># fill the NaN values with 0 or "X"</span>
+s.fillna(<span class="hljs-number">0</span>)     <span class="hljs-comment"># [1, 0, 3, 0]</span>
+s.fillna(<span class="hljs-string">"X"</span>)   <span class="hljs-comment"># [1, "X", 3, "X"]</span>
+
+<span class="hljs-comment"># Fill specific columns with different values</span>
+df.fillna({<span class="hljs-string">"col1"</span>: <span class="hljs-number">0</span>, <span class="hljs-string">"col2"</span>: <span class="hljs-string">"unknown"</span>, <span class="hljs-string">"col3"</span>: <span class="hljs-number">-1</span>})
+
+
+s.dropna()      <span class="hljs-comment"># [1, 3] (all rows with NaN are dropped</span>
+df.dropna(subset=[<span class="hljs-string">"column"</span>]) <span class="hljs-comment"># drop the rows with NaN in the "column" column</span>
+
+s.ffill()       <span class="hljs-comment"># [1, 1, 3, 3] (fill the next value)</span>
+s.bfill()       <span class="hljs-comment"># [1, 3, 3, NaN] (fill the previous value)</span>
+<span class="hljs-comment"># fill with NaN for integer and float</span>
+s.fillna(np.nan)
+
+<span class="hljs-comment"># count the number of NaN and non-NaN values</span>
+s.isna().sum()    <span class="hljs-comment"># count of NaN</span>
+s.notna().sum()   <span class="hljs-comment"># count of non-NaN</span>
+
+<span class="hljs-comment"># drop the rows with NaN and fill the NaN values with 0</span>
+df = pd.DataFrame({
+    <span class="hljs-string">"a"</span>: [<span class="hljs-number">1</span>, <span class="hljs-literal">None</span>, <span class="hljs-number">3</span>],
+    <span class="hljs-string">"b"</span>: [<span class="hljs-literal">None</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]
+})
+
+df.dropna()              <span class="hljs-comment"># rows with no NaN</span>
+df.dropna(axis=<span class="hljs-number">1</span>)        <span class="hljs-comment"># columns with no NaN</span>
+df.fillna({<span class="hljs-string">"a"</span>: <span class="hljs-number">0</span>, <span class="hljs-string">"b"</span>: <span class="hljs-number">99</span>})  <span class="hljs-comment"># different fill per column</span>
+</div></code></pre>
+<h4 id="18-rounding-in-python-and-how-to-use-a-standard-rounding-function">18. rounding in python and how to use a standard rounding function?</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># python always rounds to even</span>
+round(<span class="hljs-number">0.5</span>)  <span class="hljs-comment"># 0 (rounds to even)</span>
+round(<span class="hljs-number">1.5</span>)  <span class="hljs-comment"># 2 (rounds to even)</span>
+round(<span class="hljs-number">2.5</span>)  <span class="hljs-comment"># 2 (rounds to even)</span>
+round(<span class="hljs-number">3.5</span>)  <span class="hljs-comment"># 4 (rounds to even)</span>
+
+<span class="hljs-comment"># use traditional rounding by using apply(round2)</span>
+round2 = <span class="hljs-keyword">lambda</span> x: round(x + <span class="hljs-number">1e-9</span>, <span class="hljs-number">2</span>)
+df.apply(round2)
+<span class="hljs-comment"># 0.00</span>
+<span class="hljs-comment"># 1.00</span>
+<span class="hljs-comment"># 2.00</span>
+<span class="hljs-comment"># 3.00</span>
+</div></code></pre>
+<h4 id="19-how-to-use-merge-on-cross-table-fully-connected-table">19. how to use merge on cross table? (fully connected table)</h4>
+<pre class="hljs"><code><div>merged = students.merge(subjects, how=<span class="hljs-string">"cross"</span>).sort_values(<span class="hljs-string">"student_id"</span>)
+<span class="hljs-comment"># how="cross" is used to create a cross table</span>
+<span class="hljs-comment"># sort_values("student_id") is used to sort the data by the "student_id" column</span>
+
+<span class="hljs-comment"># students is like this:</span>
+<span class="hljs-comment"># student_id  student_name</span>
+<span class="hljs-comment"># 1           John</span>
+<span class="hljs-comment"># 2           Jane</span>
+<span class="hljs-comment"># 3           Jim</span>
+
+<span class="hljs-comment"># subjects is like this:</span>
+<span class="hljs-comment">#   subject_name</span>
+<span class="hljs-comment">#         Math</span>
+<span class="hljs-comment">#         Science</span>
+<span class="hljs-comment">#         History</span>
+
+<span class="hljs-comment"># merged is like this:</span>
+
+<span class="hljs-comment">#  student_id  student_name   subject_name</span>
+<span class="hljs-comment">#           1           John         Math</span>
+<span class="hljs-comment">#           1           John        Science</span>
+<span class="hljs-comment">#           1           John        History</span>
+<span class="hljs-comment">#           2           Jane        Math</span>
+<span class="hljs-comment">#           2           Jane        Science</span>
+<span class="hljs-comment">#           2           Jane        History</span>
+<span class="hljs-comment">#           3           Jim         Math</span>
+<span class="hljs-comment">#           3           Jim         Science</span>
+<span class="hljs-comment">#           3           Jim         History</span>
+</div></code></pre>
+<h4 id="20-how-to-use-pivottable-on-cross-table">20. how to use pivot_table() on cross table?</h4>
+<pre class="hljs"><code><div>pivot_table = pd.pivot_table(merged, values=<span class="hljs-string">"student_id"</span>, index=<span class="hljs-string">"student_name"</span>, columns=<span class="hljs-string">"subject_name"</span>, aggfunc=<span class="hljs-string">"count"</span>)
+<span class="hljs-comment"># values is used to specify the column to pivot on</span>
+<span class="hljs-comment"># index is used to specify the column to pivot on</span>
+<span class="hljs-comment"># columns is used to specify the column to pivot on</span>
+<span class="hljs-comment"># aggfunc is used to specify the aggregation function</span>
+
+<span class="hljs-comment"># the difference between pivot_table() and pivot() is that pivot_table() can handle missing values and pivot() cannot</span>
+<span class="hljs-comment"># e.g.</span>
+pivot_table = pd.pivot_table(merged, values=<span class="hljs-string">"student_id"</span>, index=<span class="hljs-string">"student_name"</span>, columns=<span class="hljs-string">"subject_name"</span>, aggfunc=<span class="hljs-string">"count"</span>)
+<span class="hljs-comment"># pivot_table is like this:</span>
+<span class="hljs-comment"># subject_name  Math  Science  History</span>
+<span class="hljs-comment"># student_name               </span>
+<span class="hljs-comment"># John           1       1       1</span>
+<span class="hljs-comment"># Jane           1       1       1</span>
+<span class="hljs-comment"># Jim            1       1       1</span>
+<span class="hljs-comment"># the difference between pivot_table() and pivot() is that pivot_table() can handle missing values and pivot() cannot</span>
+<span class="hljs-comment"># pivot() is like this:</span>
+<span class="hljs-comment"># subject_name  Math  Science  History</span>
+<span class="hljs-comment"># student_name               </span>
+<span class="hljs-comment"># John           1       1       1</span>
+<span class="hljs-comment"># Jane           1       1       1</span>
+<span class="hljs-comment"># Jim            1       1       1</span>
+</div></code></pre>
+<h4 id="21-how-to-use-apply-in-pandas">21. how to use apply() in pandas?</h4>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">weather_type</span><span class="hljs-params">(countries: pd.DataFrame, weather: pd.DataFrame)</span> -&gt; pd.DataFrame:</span>
+    filtered = weather.merge(countries, on=<span class="hljs-string">"country_id"</span>, how=<span class="hljs-string">"left"</span>)
+    filtered = filtered[(filtered[<span class="hljs-string">"day"</span>] &gt;= <span class="hljs-string">"2019-11-01"</span>) &amp; (filtered[<span class="hljs-string">"day"</span>] &lt;= <span class="hljs-string">"2019-11-30"</span>)]
+    weathers = filtered.groupby(<span class="hljs-string">"country_name"</span>).agg(
+        weather_degree_avg=(<span class="hljs-string">"weather_state"</span>, <span class="hljs-string">"mean"</span>)
+    ).reset_index()
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">weather_convert</span><span class="hljs-params">(avg_degree)</span>:</span>
+        <span class="hljs-keyword">if</span> avg_degree &lt;= <span class="hljs-number">15</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-string">"Cold"</span>
+        <span class="hljs-keyword">elif</span> avg_degree &gt;= <span class="hljs-number">25</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-string">"Hot"</span>
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-string">"Warm"</span> 
+    weathers[<span class="hljs-string">"weather_type"</span>] = weathers[<span class="hljs-string">"weather_degree_avg"</span>].apply(weather_convert)
+    <span class="hljs-keyword">return</span> weathers[[<span class="hljs-string">"country_name"</span>, <span class="hljs-string">"weather_type"</span>]].sort_values(<span class="hljs-string">"country_name"</span>)
+
+<span class="hljs-comment"># apply() is used to apply a function to a column or a dataframe</span>
+<span class="hljs-comment"># weather_convert is a function that converts the average degree to a weather type</span>
+<span class="hljs-comment"># weather_type is a new column that contains the weather type</span>
+<span class="hljs-comment"># country_name is the column to sort the data by</span>
+
+<span class="hljs-comment"># e.g. 2</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">type_of_triangle</span><span class="hljs-params">(triangles: pd.DataFrame)</span> -&gt; pd.DataFrame:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">check_type_of_triangle</span><span class="hljs-params">(temp)</span>:</span>
+        a, b, c = temp[<span class="hljs-string">"A"</span>], temp[<span class="hljs-string">"B"</span>], temp[<span class="hljs-string">"C"</span>]
+        <span class="hljs-keyword">if</span> (a + b) &lt;= c <span class="hljs-keyword">or</span> (a + c) &lt;= b <span class="hljs-keyword">or</span> (b + c) &lt;= a:
+            <span class="hljs-keyword">return</span> <span class="hljs-string">"Not A Triangle"</span>
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">if</span> a == b <span class="hljs-keyword">and</span> a == c:
+                <span class="hljs-keyword">return</span> <span class="hljs-string">"Equilateral"</span>
+            <span class="hljs-keyword">elif</span> a == b <span class="hljs-keyword">or</span> a == c <span class="hljs-keyword">or</span> b == c:
+                <span class="hljs-keyword">return</span> <span class="hljs-string">"Isosceles"</span>
+            <span class="hljs-keyword">else</span>:
+                <span class="hljs-keyword">return</span> <span class="hljs-string">"Scalene"</span>
+    <span class="hljs-comment"># use apply() to apply the check_type_of_triangle function to each row of the dataframe</span>
+    <span class="hljs-comment"># axis=1 is used to apply the function to each row</span>
+    <span class="hljs-comment"># to_frame() is used to convert the Series to a DataFrame</span>
+    <span class="hljs-comment"># rename(columns={0: "triangle_type"}) is used to rename the column to "triangle_type"</span>
+    triangles = triangles.apply(check_type_of_triangle, axis=<span class="hljs-number">1</span>).to_frame().rename(columns={<span class="hljs-number">0</span>: <span class="hljs-string">"triangle_type"</span>})
+    <span class="hljs-keyword">return</span> triangles
+    
+</div></code></pre>
+<h4 id="22-how-to-use-query-in-pandas">22. how to use query() in pandas?</h4>
+<pre class="hljs"><code><div>df_filtered = df.query(<span class="hljs-string">"age &gt; 30 and city == 'Berlin'"</span>)
+<span class="hljs-comment"># query() is used to filter the data by multiple conditions</span>
+
+df_filtered = df[(df[<span class="hljs-string">"age"</span>] &gt; <span class="hljs-number">30</span>) &amp; (df[<span class="hljs-string">"city"</span>] == <span class="hljs-string">"Berlin"</span>)]
+<span class="hljs-comment"># filter the data by multiple conditions</span>
+</div></code></pre>
+<h4 id="23-how-to-use-assign-in-pandas">23. how to use assign() in pandas?</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># how to use assign() to add a new column to the dataframe with a new column name</span>
+<span class="hljs-comment"># and you and also use a lambda function to add a new column</span>
+df2 = df.assign(total=df[<span class="hljs-string">"price"</span>] * df[<span class="hljs-string">"qty"</span>])
+
+df2 = (
+    df.assign(
+        total=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-string">"price"</span>] * x[<span class="hljs-string">"qty"</span>],
+        discounted=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-string">"total"</span>] * <span class="hljs-number">0.9</span>,
+    )
+)
+</div></code></pre>
+<h4 id="24-how-to-use-pdstrmatch-in-pandas">24. how to use pd.str.match() in pandas?</h4>
+<pre class="hljs"><code><div>s = pd.Series([<span class="hljs-string">"apple"</span>, <span class="hljs-string">"banana"</span>, <span class="hljs-string">"cherry"</span>, <span class="hljs-string">"Apple123"</span>])
+
+<span class="hljs-comment"># match - starts with pattern, match from the beginning of the string</span>
+s.str.match(<span class="hljs-string">r"[a-z]+"</span>)      <span class="hljs-comment"># [True, True, True, False]</span>
+
+<span class="hljs-comment"># contains - anywhere in string</span>
+s.str.contains(<span class="hljs-string">r"a"</span>)        <span class="hljs-comment"># [True, True, False, False]</span>
+
+<span class="hljs-comment"># fullmatch - entire string matches</span>
+s.str.fullmatch(<span class="hljs-string">r"[a-z]+"</span>)  <span class="hljs-comment"># [True, True, True, False]</span>
+
+s.str.findall(pattern) <span class="hljs-comment"># find all matches of the "pattern" in the "column" column</span>
+<span class="hljs-comment"># pattern is the pattern to find all matches of in the "column" column</span>
+
+s.str.replace(pattern, repl) <span class="hljs-comment"># replace the "pattern" with the "repl" value in the "column" column</span>
+<span class="hljs-comment"># pattern is the pattern to replace in the "column" column</span>
+<span class="hljs-comment"># repl is the value to replace the "pattern" with in the "column" column</span>
+
+<span class="hljs-comment"># ^Start of string</span>
+<span class="hljs-comment"># $End of string</span>
+
+<span class="hljs-comment"># *   0 or more</span>
+<span class="hljs-comment"># +   1 or more</span>
+<span class="hljs-comment"># ?   0 or 1</span>
+
+<span class="hljs-comment"># e.g. find all matches of the "pattern" in the "column" column</span>
+s.str.findall(<span class="hljs-string">r"[a-z]+"</span>) <span class="hljs-comment"># ["apple", "banana", "cherry"]</span>
+
+<span class="hljs-comment"># e.g. replace the "pattern" with the "repl" value in the "column" column</span>
+s.str.replace(<span class="hljs-string">r"[a-z]+"</span>, <span class="hljs-string">"X"</span>) <span class="hljs-comment"># ["X", "X", "X", "X123"]</span>
+
+<span class="hljs-comment"># [a-z]   Lowercase letter</span>
+<span class="hljs-comment"># [A-Z]   Uppercase letter</span>
+<span class="hljs-comment"># [0-9] or \d   Digit</span>
+<span class="hljs-comment"># [a-zA-Z]   Any letter</span>
+<span class="hljs-comment"># [a-zA-Z0-9]   Alphanumeric</span>
+<span class="hljs-comment"># \w   Word char (letter, digit, _)</span>
+<span class="hljs-comment"># \s   Whitespace</span>
+<span class="hljs-comment"># .   Any character (except newline)</span>
+<span class="hljs-comment"># \.   Literal dot</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">valid_emails</span><span class="hljs-params">(users: pd.DataFrame)</span> -&gt; pd.DataFrame:</span>
+    pattern = <span class="hljs-string">r"^[a-zA-Z][a-zA-Z0-9_.\-]*@leetcode\.com$"</span> <span class="hljs-comment"># pattern to match the email addresses</span>
+    <span class="hljs-keyword">return</span> users[users[<span class="hljs-string">"mail"</span>].str.match(pattern)]
+
+<span class="hljs-comment"># Without r</span>
+pattern = <span class="hljs-string">"^[a-zA-Z][a-zA-Z0-9_.\\-]*@leetcode\\.com$"</span>
+
+<span class="hljs-comment"># With r (cleaner), recommended, otherwise you will use double backslash for each backslash</span>
+pattern = <span class="hljs-string">r"^[a-zA-Z][a-zA-Z0-9_.\-]*@leetcode\.com$"</span>
+
+<span class="hljs-comment"># exmaple 2</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">find_patients</span><span class="hljs-params">(patients: pd.DataFrame)</span> -&gt; pd.DataFrame:</span>
+    pattern = <span class="hljs-string">r"(^| )DIAB1"</span>
+    <span class="hljs-keyword">return</span> patients[patients[<span class="hljs-string">"conditions"</span>].str.contains(pattern)]
+</div></code></pre>
+<h4 id="25-pdstr-fucntions-in-pandas">25. pd.str fucntions in pandas?</h4>
+<pre class="hljs"><code><div>s = pd.Series([<span class="hljs-string">"apple"</span>, <span class="hljs-string">"banana"</span>, <span class="hljs-string">"cherry"</span>, <span class="hljs-string">"Apple123"</span>])
+
+s.str.upper() <span class="hljs-comment"># ["APPLE", "BANANA", "CHERRY", "APPLE123"]</span>
+s.str.lower() <span class="hljs-comment"># ["apple", "banana", "cherry", "apple123"]</span>
+s.str.title() <span class="hljs-comment"># ["Apple", "Banana", "Cherry", "Iphone15 is good"]</span>
+s.str.capitalize() <span class="hljs-comment"># ["Apple", "Banana", "Cherry", "Iphone15 Is Good"] capitalize all words in the strings</span>
+s.str.strip() <span class="hljs-comment"># ["apple", "banana", "cherry", "Iphone15 is good"] strip the left and right side of the string   </span>
+s.str.lstrip() <span class="hljs-comment"># ["apple", "banana", "cherry", "Iphone15 is good"] strip the left side of the string</span>
+s.str.rstrip() <span class="hljs-comment"># ["apple", "banana", "cherry", "Iphone15 is good"] strip the right side of the string</span>
+
+s.str.contains(<span class="hljs-string">"World"</span>)      <span class="hljs-comment"># [True, False, False, False]</span>
+s.str.contains(<span class="hljs-string">"o"</span>, case=<span class="hljs-literal">False</span>)  <span class="hljs-comment"># Case insensitive</span>
+
+s.str.split(<span class="hljs-string">" "</span>) <span class="hljs-comment"># ["apple", "banana", "cherry", "Iphone15 is good"] split the string by the " " character</span>
+
+s.str.count(<span class="hljs-string">"@"</span>) <span class="hljs-comment"># [0, 0, 0, 0] count the number of "@" characters in the string</span>
+
+s.str.replace(<span class="hljs-string">"_"</span>, <span class="hljs-string">" "</span>)           <span class="hljs-comment"># ["data science", ...]</span>
+s.str.replace(<span class="hljs-string">r"\d+"</span>, <span class="hljs-string">""</span>, regex=<span class="hljs-literal">True</span>)  <span class="hljs-comment"># Remove digits</span>
+
+s.str[<span class="hljs-number">0</span>] <span class="hljs-comment"># ["a", "b", "c", "A"] get the first character of the string</span>
+s.str[<span class="hljs-number">-1</span>] <span class="hljs-comment"># ["e", "a", "y", "3"] get the last character of the string</span>
+s.str[<span class="hljs-number">0</span>:<span class="hljs-number">3</span>] <span class="hljs-comment"># ["app", "ban", "che", "App"] get the first 3 characters of the string</span>
+s.str[<span class="hljs-number">-3</span>:] <span class="hljs-comment"># ["ple", "ana", "ry", "123"] get the last 3 characters of the string</span>
+s.str[::<span class="hljs-number">2</span>] <span class="hljs-comment"># ["a", "b", "c", "A"] get every other character of the string</span>
+s.str[::<span class="hljs-number">-1</span>] <span class="hljs-comment"># ["321ppe", "ana", "y", "A"] reverse the string</span>
+s.str[::<span class="hljs-number">-2</span>] <span class="hljs-comment"># ["321ppe", "ana", "y", "A"] reverse the string and get every other character of the string</span>
+s.str[::<span class="hljs-number">-3</span>] <span class="hljs-comment"># ["321ppe", "ana", "y", "A"] reverse the string and get every other character of the string</span>
+
+s.str.len()  <span class="hljs-comment"># [15, 6, 12, 14]</span>
+
+s.str.startswith(<span class="hljs-string">"data"</span>)  <span class="hljs-comment"># [False, False, True, False]</span>
+s.str.endswith(<span class="hljs-string">".com"</span>)    <span class="hljs-comment"># [False, False, False, True]</span>
+
+s.str.match(<span class="hljs-string">r"[a-z]+"</span>)  <span class="hljs-comment"># [False, False, True, True]</span>
+</div></code></pre>
+<h4 id="26-how-to-use-traditional-rounding-function-in-pandas">26. how to use traditional rounding function in pandas?</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># method 1</span>
+round2 = <span class="hljs-keyword">lambda</span> x: round(x + <span class="hljs-number">1e-9</span>, <span class="hljs-number">2</span>)
+df.apply(round2)
+<span class="hljs-comment"># 0.00</span>
+<span class="hljs-comment"># 1.00</span>
+<span class="hljs-comment"># 2.00</span>
+<span class="hljs-comment"># 3.00</span>
+
+<span class="hljs-comment"># method 2</span>
+np.floor(x + <span class="hljs-number">0.5</span>)
+
+<span class="hljs-comment"># method 3</span>
+(pd.Series([<span class="hljs-number">0.0</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">1.5</span>, <span class="hljs-number">2.0</span>]) + <span class="hljs-number">0.5</span>).astype(int) <span class="hljs-comment"># [0, 1, 1, 2, 2] round up the values  </span>
+</div></code></pre>
+<h4 id="27-how-to-use-pdloc-in-pandas">27. how to use pd.loc() in pandas?</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Select rows AND columns, then assign</span>
+df.loc[condition, <span class="hljs-string">"column"</span>] = new_value
+</div></code></pre>
+<h4 id="28-how-to-use-melt-in-pandas">28. how to use melt() in pandas?</h4>
+<pre class="hljs"><code><div>melt() Parameters
+<span class="hljs-comment"># Parameter Description</span>
+| Parameter   | Description                                |
+|-------------|--------------------------------------------|
+| id_vars     | Columns to keep <span class="hljs-keyword">as</span>-<span class="hljs-keyword">is</span>                      |
+| value_vars  | Columns to unpivot (default: all others)   |
+| var_name    | Name <span class="hljs-keyword">for</span> the <span class="hljs-string">"variable"</span> column             |
+| value_name  | Name <span class="hljs-keyword">for</span> the <span class="hljs-string">"value"</span> column                |
+
+df.melt(
+    id_vars=[<span class="hljs-string">"product_id"</span>],
+    value_vars=[<span class="hljs-string">"store1"</span>, <span class="hljs-string">"store2"</span>, <span class="hljs-string">"store3"</span>], <span class="hljs-comment"># default: all others</span>
+    var_name=<span class="hljs-string">"store"</span>, <span class="hljs-comment"># name for the "variable" column same as columns in pivot()</span>
+    value_name=<span class="hljs-string">"price"</span> <span class="hljs-comment"># name for the "value" column same as values in pivot()</span>
+) 
+
+<span class="hljs-comment"># melt the data by the "product_id" column and the "store" column, the "price" column is the value of the "store" column</span>
+<span class="hljs-comment"># the result is like this:</span>
+<span class="hljs-comment"># product_id store  price</span>
+<span class="hljs-comment"># 0          1  store1   10</span>
+<span class="hljs-comment"># 1          1  store2   20</span>
+<span class="hljs-comment"># 2          1  store3   30   </span>
+
+<span class="hljs-comment"># pivot vs melt</span>
+<span class="hljs-comment"># pivot: long → wide</span>
+df.pivot(index=<span class="hljs-string">"product_id"</span>, columns=<span class="hljs-string">"store"</span>, values=<span class="hljs-string">"price"</span>)
+
+<span class="hljs-comment"># melt: wide → long</span>
+df.melt(id_vars=<span class="hljs-string">"product_id"</span>, var_name=<span class="hljs-string">"store"</span>, value_name=<span class="hljs-string">"price"</span>)
+</div></code></pre>
+<h4 id="30-how-to-use-merge-on-cross-table-fully-connected-table">30. how to use merge on cross table? (fully connected table)</h4>
+<pre class="hljs"><code><div>result = teams.merge(teams, how=<span class="hljs-string">"cross"</span>) (n * n combinations)
+<span class="hljs-comment"># n is the number of rows in the "teams" dataframe</span>
+<span class="hljs-comment"># result is like this:</span>
+<span class="hljs-comment"># team_name   team_name   |</span>
+<span class="hljs-comment">#-------------|-------------|</span>
+<span class="hljs-comment"># Leetcode FC | Leetcode FC |</span>
+<span class="hljs-comment"># Leetcode FC | Ahly SC     |</span>
+<span class="hljs-comment"># Leetcode FC | Real Madrid |</span>
+<span class="hljs-comment"># Ahly SC     | Leetcode FC |</span>
+<span class="hljs-comment"># Ahly SC     | Ahly SC     |</span>
+<span class="hljs-comment"># Ahly SC     | Real Madrid |</span>
+<span class="hljs-comment"># Real Madrid | Leetcode FC |</span>
+<span class="hljs-comment"># Real Madrid | Ahly SC     |</span>
+<span class="hljs-comment"># Real Madrid | Real Madrid |</span>
+</div></code></pre>
+<h4 id="31-how-to-create-a-new-dataframe-in-pandas">31. how to create a new dataframe in pandas?</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+
+data = [[<span class="hljs-number">1</span>, <span class="hljs-string">"Alice"</span>, <span class="hljs-number">100</span>], [<span class="hljs-number">2</span>, <span class="hljs-string">"Bob"</span>, <span class="hljs-number">200</span>]]
+
+df = pd.DataFrame(data, columns=[<span class="hljs-string">"id"</span>, <span class="hljs-string">"name"</span>, <span class="hljs-string">"salary"</span>])
+<span class="hljs-comment">#    id   name  salary</span>
+<span class="hljs-comment"># 0   1  Alice     100</span>
+<span class="hljs-comment"># 1   2    Bob     200</span>
+</div></code></pre>
+<h4 id="32-how-to-use-pdiloc-in-pandas-data-frame-slicing">32. how to use pd.iloc() in pandas? (data frame slicing)</h4>
+<pre class="hljs"><code><div>df.iloc[<span class="hljs-number">0</span>] <span class="hljs-comment"># [1, "Alice", 100] get the first row</span>
+df.iloc[<span class="hljs-number">0</span>:<span class="hljs-number">2</span>] <span class="hljs-comment"># [[1, "Alice", 100], [2, "Bob", 200]] get the first 2 rows</span>
+df.iloc[<span class="hljs-number">0</span>:<span class="hljs-number">2</span>, <span class="hljs-number">0</span>:<span class="hljs-number">2</span>] <span class="hljs-comment"># [[1, "Alice"], [2, "Bob"]] get the first 2 rows and the first 2 columns</span>
+
+<span class="hljs-comment"># First 3 rows</span>
+df.head(<span class="hljs-number">3</span>)
+<span class="hljs-comment"># or</span>
+df.iloc[:<span class="hljs-number">3</span>]
+
+<span class="hljs-comment"># Remove last column</span>
+df.iloc[:, :<span class="hljs-number">-1</span>]
+
+<span class="hljs-comment"># Both: first 3 rows, remove last column</span>
+df.iloc[:<span class="hljs-number">3</span>, :<span class="hljs-number">-1</span>]
+</div></code></pre>
+<h4 id="33-how-to-use-pdconcat-in-pandas">33. how to use pd.concat() in pandas?</h4>
+<pre class="hljs"><code><div>pd.concat([df1, df2]) <span class="hljs-comment"># concatenate the two dataframes</span>
+pd.concat([df1, df2], axis=<span class="hljs-number">1</span>) <span class="hljs-comment"># concatenate the two dataframes horizontally</span>
+pd.concat([df1, df2], axis=<span class="hljs-number">0</span>, ignore_index=<span class="hljs-literal">True</span>) <span class="hljs-comment"># concatenate the two dataframes vertically and ignore the index, and reset the index</span>
+<span class="hljs-comment"># ignore_index=True is used to ignore the index of the two dataframes</span>
+<span class="hljs-comment"># axis=0 is used to concatenate the two dataframes vertically</span>
+<span class="hljs-comment"># axis=1 is used to concatenate the two dataframes horizontally</span>
+</div></code></pre>
+<h4 id="34-how-to-use-rank-in-pandas">34. how to use rank() in pandas?</h4>
+<pre class="hljs"><code><div>df = pd.DataFrame({
+    <span class="hljs-string">"name"</span>: [<span class="hljs-string">"Alice"</span>, <span class="hljs-string">"Bob"</span>, <span class="hljs-string">"Charlie"</span>, <span class="hljs-string">"David"</span>],
+    <span class="hljs-string">"score"</span>: [<span class="hljs-number">85</span>, <span class="hljs-number">92</span>, <span class="hljs-number">85</span>, <span class="hljs-number">78</span>]
+})
+
+df[<span class="hljs-string">"rank"</span>] = df[<span class="hljs-string">"score"</span>].rank()
+<span class="hljs-comment">#      name  score  rank</span>
+<span class="hljs-comment"># 0   Alice     85   2.5</span>
+<span class="hljs-comment"># 1     Bob     92   4.0</span>
+<span class="hljs-comment"># 2  Charlie    85   2.5</span>
+<span class="hljs-comment"># 3   David     78   1.0</span>
+
+<span class="hljs-comment"># method can be "average", "min", "max", "first", "dense"</span>
+<span class="hljs-comment"># average: the average rank in the group 1, 2.5, 2.5, 4</span>
+<span class="hljs-comment"># min: the smallest rank in the group 1, 2, 2, 3</span>
+<span class="hljs-comment"># max: the largest rank in the group 1, 3, 3, 4</span>
+<span class="hljs-comment"># first: the first rank in the group 1, 2, 3, 4</span>
+<span class="hljs-comment"># dense: the dense rank in the group 1, 2, 2, 3</span>
+
+df[<span class="hljs-string">"score"</span>] = [<span class="hljs-number">85</span>, <span class="hljs-number">92</span>, <span class="hljs-number">85</span>, <span class="hljs-number">78</span>]
+
+df[<span class="hljs-string">"score"</span>].rank(method=<span class="hljs-string">"average"</span>)  <span class="hljs-comment"># [2.5, 4.0, 2.5, 1.0]</span>
+df[<span class="hljs-string">"score"</span>].rank(method=<span class="hljs-string">"min"</span>)      <span class="hljs-comment"># [2.0, 4.0, 2.0, 1.0]</span>
+df[<span class="hljs-string">"score"</span>].rank(method=<span class="hljs-string">"max"</span>)      <span class="hljs-comment"># [3.0, 4.0, 3.0, 1.0]</span>
+df[<span class="hljs-string">"score"</span>].rank(method=<span class="hljs-string">"first"</span>)    <span class="hljs-comment"># [2.0, 4.0, 3.0, 1.0]</span>
+df[<span class="hljs-string">"score"</span>].rank(method=<span class="hljs-string">"dense"</span>)    <span class="hljs-comment"># [2.0, 3.0, 2.0, 1.0]</span>
+
+df[<span class="hljs-string">"rank"</span>] = df[<span class="hljs-string">"score"</span>].rank(ascending=<span class="hljs-literal">False</span>)
+<span class="hljs-comment">#      name  score  rank</span>
+<span class="hljs-comment"># 0   Alice     85   2.5</span>
+<span class="hljs-comment"># 1     Bob     92   1.0   ← highest score = rank 1</span>
+<span class="hljs-comment"># 2  Charlie    85   2.5</span>
+<span class="hljs-comment"># 3   David     78   4.0</span>
+<span class="hljs-comment"># ascending=False is used to rank the data in descending order</span>
+<span class="hljs-comment"># ascending=True is used to rank the data in ascending order</span>
+
+<span class="hljs-comment"># method can be "average", "min", "max", "first", "dense"</span>
+<span class="hljs-comment"># ascending=False: the highest score = rank 1</span>
+<span class="hljs-comment"># ascending=True: the lowest score = rank 1</span>
+</div></code></pre>
+<h4 id="35-how-to-drop-a-column-in-pandas">35. how to drop a column in pandas?</h4>
+<pre class="hljs"><code><div>df.drop(columns=[<span class="hljs-string">"column"</span>]) <span class="hljs-comment"># drop the "column" column</span>
+df.drop(columns=[<span class="hljs-string">"column1"</span>, <span class="hljs-string">"column2"</span>]) <span class="hljs-comment"># drop the "column1" and "column2" columns</span>
+df.drop(columns=<span class="hljs-string">"a"</span>, inplace=<span class="hljs-literal">True</span>) <span class="hljs-comment"># drop the "a" column and save the changes</span>
+</div></code></pre>
+<h4 id="36-how-to-ace-in-string-pattern-matching-in-pandas">36 how to ace in string pattern matching in pandas?</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># \w number, alphabate, +, \W (non word), \d(0-9), \s whitespace, \b border of word</span>
+<span class="hljs-comment"># ^, $ (start and end with) ^hello$</span>
+<span class="hljs-comment"># *, +, ? (0+, 1+, 0 or 1)</span>
+<span class="hljs-comment"># group: \d{3} =&gt; 3 digits</span>
+<span class="hljs-comment"># bug: . means any character, use \. =&gt; '.'</span>
+<span class="hljs-comment"># edge case: .comm .com$ ends with .com (^hello$)</span>
+</div></code></pre>
+
+</body>
+</html>
