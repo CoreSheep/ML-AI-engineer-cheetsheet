@@ -1,6 +1,7 @@
 """Agent Initialization"""
 
 import os
+import asyncio
 from llama_index.core.agent import ReActAgent
 from llama_index.core.tools import QueryEngineTool, ToolMetadata
 from llama_index.llms.openai import OpenAI
@@ -62,7 +63,7 @@ def get_agent(provider="openai", model=None, index_name="deepseek_ocr_index"):
     ]
     
     from prompts import CONTEXT, TOOL_DESCRIPTION, TOOL_NAME
-    
+
     # Create and return agent
     return ReActAgent(
         name=TOOL_NAME,
@@ -72,3 +73,12 @@ def get_agent(provider="openai", model=None, index_name="deepseek_ocr_index"):
         system_prompt=CONTEXT, 
         verbose=True
     )
+
+
+async def main():
+    agent = get_agent(provider="openai", model="gpt-4", index_name="deepseek_ocr_index")
+    response = await agent.arun("What is DeepSeek-OCR and what problem does it solve?")
+    print(response)
+
+if __name__ == "__main__":
+    asyncio.run(main())
