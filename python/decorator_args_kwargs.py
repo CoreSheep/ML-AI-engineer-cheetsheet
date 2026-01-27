@@ -1,3 +1,6 @@
+import time
+
+
 def my_decorator(func):
     def wrapper(*args, **kwargs):
         print("Before function")
