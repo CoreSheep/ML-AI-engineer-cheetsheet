@@ -1685,14 +1685,12 @@ def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
 - note: use dynamic programming to find the number of ways to climb the stairs<br>
 ```python
 def climbStairs(self, n: int) -> int:
-    if n < 3:
-        return n
-    dp = [0 for _ in range(n + 1)]
-    dp[1] = 1
-    dp[2] = 2
+    dp = [0] * (n + 1)
+    dp[0] = 1  # 0 stairs has 1 way to climb, no stairs to climb
+    dp[1] = 1  # 1 stair has 1 way to climb, only 1 step to climb
 
-    for j in range(3, n + 1):
-        dp[j] = dp[j - 1] + dp[j - 2]
+    for i in range(2, n + 1):
+        dp[i] = dp[i - 1] + dp[i - 2]
     
     return dp[n]
 ```
@@ -1714,13 +1712,13 @@ def climbStairs(self, n: int) -> int:
     - 518. 零钱兑换 II
 ```python
 def coinChange(self, coins: List[int], amount: int) -> int:
-    dp = [float('inf')] * (amount + 1)
-    dp[0] = 0
+    dp = [float('inf')] * (amount + 1) # dp[i]表示凑成金额i所需的最少硬币数
+    dp[0] = 0 # 凑成金额0所需的最少硬币数为0
 
     for i in range(amount + 1):
         for coin in coins:
-            if coin <= i and dp[i - coin] != float('inf'):
-                dp[i] = min(dp[i], dp[i - coin] + 1)
+            if coin <= i and dp[i - coin] != float('inf'):  # check if the subproblem is solvable
+                dp[i] = min(dp[i], dp[i - coin] + 1)  # update the minimum number of coins needed to make up the amount
 
     return dp[amount] if dp[amount] != float('inf') else -1
 ```
@@ -1741,11 +1739,11 @@ def lengthOfLIS(self, nums: List[int]) -> int:
     dp[0] = 0
 
     for i in range(1, n + 1):
-        for j in range(1, i):
-            if nums[i - 1] > nums[j - 1]:
+        for j in range(1, i): # check all the previous elements
+            if nums[i - 1] > nums[j - 1]: # if the current element is greater than the previous element, then update the dp[i]
                 dp[i] = max(dp[i], dp[j] + 1)
     
-    return max(dp)
+    return max(dp) # return the maximum value of the dp array
 ```
 
 
@@ -1761,13 +1759,13 @@ def lengthOfLIS(self, nums: List[int]) -> int:
 ```python
 def longestCommonSubsequence(self, text1: str, text2: str) -> int:
     m, n = len(text1), len(text2)
-    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    dp = [[0] * (n + 1) for _ in range(m + 1)] # dp[i][j]表示text1[0:i]和text2[0:j]的最长公共子序列的长度, 下标从1开始，每次更新dp[i][j]时，需要考虑text1[i-1]和text2[j-1]是否相同
 
     for i in range(1, m + 1):
         for j in range(1, n + 1):
-            if text1[i - 1] == text2[j - 1]:  # YES → Take diagonal + 1
+            if text1[i - 1] == text2[j - 1]:  # YES → Take diagonal + 1, because the current element is the same as the previous element in text1 and text2
                 dp[i][j] = dp[i - 1][j - 1] + 1
-            else:  # NO → Take the better neighbor
+            else:  # NO → Take the better neighbor, because the current element is not the same as the previous element in text1 and text2
                 dp[i][j] = max(dp[i][j - 1], dp[i - 1][j])
     
     return dp[m][n]
@@ -1791,7 +1789,7 @@ def wordBreak(s: str, wordDict: list[str]) -> bool:
     
     for i in range(1, n + 1):
         for j in range(i):
-            if dp[j] and s[j:i] in words:
+            if dp[j] and s[j:i] in words: # if the previous substring is breakable and the s[j:i] is in the wordDict, then the current substring is also breakable
                 dp[i] = True
                 break  # found one valid break, no need to continue
     
