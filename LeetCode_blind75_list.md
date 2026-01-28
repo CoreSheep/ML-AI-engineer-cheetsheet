@@ -1921,7 +1921,7 @@ def rob(self, nums: List[int]) -> int:
     if len(nums) == 1:
         return nums[0]
     # You can not rob the first and the last houses, so split the hourses
-    return max(rob_not_adjacent(nums[:-1]), rob_not_adjacent(nums[1:]))    
+    return max(rob_not_adjacent(nums[:-1]), rob_not_adjacent(nums[1:]))  # trick
 ```
 
 #### Decode Ways ✅
@@ -1935,26 +1935,18 @@ def rob(self, nums: List[int]) -> int:
 3. 返回dp数组中的最后一个元素
 
 ```python
-def numDecodings(s: str) -> int:
-    n = len(s)
-    if n == 0 or s[0] == '0':
-        return 0
-    
-    dp = [0] * (n + 1)
-    dp[0] = 1  # empty string
-    dp[1] = 1  # first char (already checked not '0')
-    
-    for i in range(2, n + 1):
-        # One digit: s[i-1]
-        if s[i-1] != '0':
-            dp[i] += dp[i-1]
+ def numDecodings(self, s: str) -> int:
+        DIGITS = [str(i) for i in range(1, 27)]  # same as the wordDict in the Word Break problem
+        n = len(s)
+        dp = [0] * (n + 1) # dp[i]表示s[0:i]的解码方式数
+        dp[0] = 1  # empty string has 1 way to decode
+
+        for i in range(1, n + 1):
+            for j in range(i):
+                if s[j:i] in DIGITS: # if the current substring s[j:i] is a valid digit, then add the number of ways to decode the previous substring
+                    dp[i] += dp[j]
         
-        # Two digits: s[i-2:i]
-        two_digit = int(s[i-2:i])
-        if s[i-2] != '0' and 10 <= two_digit <= 26:
-            dp[i] += dp[i-2]
-    
-    return dp[n]
+        return dp[n]
 ```
 
 ---
@@ -2041,18 +2033,20 @@ def canJump(self, nums: list[int]) -> bool:
     dp = [False] * n
     dp[0] = True  # start position is reachable
     
-    max_reach = 0  # furthest index we can reach
+    max_reach = 0  # furthest index we can reach, to make it faster to check if the current position is reachable
     
     for i in range(n):
         if not dp[i]:  # can't reach this position
             return False
+
+        max_reach = max(max_reach, i + nums[i])
         
         # Mark all positions I can jump to
-        new_reach = i + nums[i]
-        for j in range(max_reach + 1, min(new_reach + 1, n)):
+        for j in range(i, min(max_reach + 1, n)):
             dp[j] = True
         
-        max_reach = max(max_reach, new_reach)
+        if dp[n - 1]:
+            return True
     
     return dp[n - 1]
 ```
@@ -2494,37 +2488,4 @@ def missingNumber(self, nums: List[int]) -> int:
 # a ^ a = 0, a ^ 0 = a
 def missingNumber(self, nums: List[int]) -> int:
     res = len(nums)
-    for i in range(len(nums)):
-        res ^= i ^ nums[i]
-    return res
-```
-
-#### Sum of Two Integers ✅
-- [Sum of Two Integers](https://leetcode.com/problems/sum-of-two-integers/)  
-- solution: bit manipulation (XOR and AND)<br>
-- space: O(1)<br>
-- time: O(1)<br>
-- note: use bit manipulation XOR and AND to find the sum of two integers<br>
-```python
-def getSum(self, a: int, b: int) -> int:
-    # using bit manipulation XOR and AND
-    # a ^ a = 0, a ^ 0 = a
-    # carry = a & b
-    # mask = 0xFFFFFFFF (32-bit mask)
-    # MAX_INT = 0x7FFFFFFF (32-bit max integer)
-    # a = (a ^ b) & mask
-    # b = (carry << 1) & mask
-    # return a if a < MAX_INT else ~(a ^ mask) (or use a - 0x100000000)
-    mask = 0xFFFFFFFF
-    MAX_INT = 0x7FFFFFFF
-
-    while b:  # stop when there's no carry
-        sum_without_carry = (a ^ b) & mask
-        carry = (a & b) << 1
-        a, b = sum_without_carry, carry
-    
-    if a > MAX_INT:  # handle negatives
-        a = a - 0x100000000  # signed = unsigned - 0x100000000 (32bit)
-    
-    return a
-```
+    for i in range(len(
