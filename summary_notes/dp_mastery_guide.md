@@ -7,14 +7,14 @@ Every DP problem follows this structure:
 1. **Define dp[i] meaning** - What does this index represent?
 2. **Find the recurrence relation** - How does dp[i] relate to previous states?
 3. **Initialize base cases** - What are dp[0], dp[1], etc.?
-4. **Determine iteration order** - Left-to-right or right-to-left?
+4. **Determine iteration order** - Left-to-right or right-to-left? 
 5. **Trace an example** - Debug with a small test case
 
 ---
 
 ## Problem Classification and Patterns
 
-### Pattern 1: 1D Linear DP (Single Array)
+### Pattern 1: 1D Linear DP (Single Array) ✅
 
 **When to use:** Current state depends only on previous positions in a single sequence
 
@@ -40,6 +40,7 @@ for i in range(1, n + 1):
 - Always check dp[i-1] (one step back) and dp[i-2] (two steps back)
 - Use max() for optimization problems (House Robber)
 - Use sum() or += for counting problems (Climbing Stairs, Decode Ways)
+- Notice how to initialize dp[0] and dp[1]
 
 ---
 

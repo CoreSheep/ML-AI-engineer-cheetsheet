@@ -2488,4 +2488,37 @@ def missingNumber(self, nums: List[int]) -> int:
 # a ^ a = 0, a ^ 0 = a
 def missingNumber(self, nums: List[int]) -> int:
     res = len(nums)
-    for i in range(len(
+    for i in range(len(nums)):
+        res ^= i ^ nums[i]
+    return res
+```
+
+#### Sum of Two Integers ✅
+- [Sum of Two Integers](https://leetcode.com/problems/sum-of-two-integers/)  
+- solution: bit manipulation (XOR and AND)<br>
+- space: O(1)<br>
+- time: O(1)<br>
+- note: use bit manipulation XOR and AND to find the sum of two integers<br>
+```python
+def getSum(self, a: int, b: int) -> int:
+    # using bit manipulation XOR and AND
+    # a ^ a = 0, a ^ 0 = a
+    # carry = a & b
+    # mask = 0xFFFFFFFF (32-bit mask)
+    # MAX_INT = 0x7FFFFFFF (32-bit max integer)
+    # a = (a ^ b) & mask
+    # b = (carry << 1) & mask
+    # return a if a < MAX_INT else ~(a ^ mask) (or use a - 0x100000000)
+    mask = 0xFFFFFFFF
+    MAX_INT = 0x7FFFFFFF
+
+    while b:  # stop when there's no carry
+        sum_without_carry = (a ^ b) & mask
+        carry = (a & b) << 1
+        a, b = sum_without_carry, carry
+    
+    if a > MAX_INT:  # handle negatives
+        a = a - 0x100000000  # signed = unsigned - 0x100000000 (32bit)
+    
+    return a
+```
