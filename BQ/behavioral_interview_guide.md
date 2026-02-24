@@ -1,15 +1,64 @@
 # Behavioral Interview Preparation Guide
 
-A comprehensive framework for preparing and succeeding in behavioral interviews for **Data Engineering, Machine Learning Engineering, AI Engineering**, and technical roles.
+A comprehensive framework for preparing and succeeding in behavioral interviews for Data Engineering, Machine Learning Engineering, and AI Engineering roles.
 
-**New**: Now includes 68 ML/AI-specific questions covering model development, deployment, LLMs, computer vision, NLP, ethics, and production ML challenges.
+## Overview
+
+This guide provides:
+- STAR method framework with detailed examples
+- 15 essential tips for behavioral interviews
+- 91 categorized questions (23 Data Engineering + 68 ML/AI Engineering)
+- 3 complete STAR story examples with quantified results
+- Preparation checklist and practice templates
 
 ## Table of Contents
 
-- [General Tips](#general-tips)
-- [STAR Framework](#star-framework)
-- [Question Categories](#question-categories)
-- [Practice Grid](#practice-grid)
+1. [How to Use This Guide](#how-to-use-this-guide)
+2. [General Tips](#general-tips-to-succeed-in-behavioral-interviews)
+3. [STAR Framework](#star-framework)
+4. [Question Categories](#question-categories)
+5. [Practice Grid](#practice-grid)
+6. [Common Questions](#common-question-examples-by-category)
+7. [Interview Round Tips](#tips-for-different-interview-rounds)
+8. [Resources](#additional-resources)
+
+## How to Use This Guide
+
+### First Time Preparation (Week 1)
+
+**Day 1-2: Understand the Framework**
+1. Read General Tips section
+2. Study STAR framework with examples
+3. Understand question categories
+
+**Day 3-4: Brainstorm Stories**
+1. List 15-20 experiences from your career
+2. Categorize them by question type
+3. Select 10-15 strongest stories
+
+**Day 5-7: Write STAR Answers**
+1. Write full STAR answers for each story
+2. Include specific metrics and outcomes
+3. Keep answers to 2-3 minutes when spoken
+
+### Ongoing Practice (Week 2+)
+
+**Daily Practice**
+- Practice 2-3 stories out loud
+- Time yourself (aim for 2-3 minutes)
+- Refine based on clarity and impact
+
+**Before Interview**
+- Review your prepared stories
+- Map stories to likely question types
+- Prepare 3-5 questions to ask interviewer
+
+### Quick Reference
+
+**During Interview Prep**
+- Use [Question Preparation Checklist](#question-preparation-checklist) to ensure coverage
+- Review [Common Questions](#common-question-examples-by-category) for your role
+- Glance at [Interview Round Tips](#tips-for-different-interview-rounds)
 
 ---
 
