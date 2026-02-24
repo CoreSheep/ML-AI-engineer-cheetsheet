@@ -1,6 +1,6 @@
 ## Blind 75 - Complete List
 Blind 75 - Complete List
-solved: 57/75
+solved: 75/75
 The famous list from a Meta engineer, organized by pattern:
 
 ### Arrays & Hashing (9) ✅
