@@ -23,7 +23,7 @@ def get_llm(provider="openai", model=None):
         )
     elif provider.lower() == "anthropic":
         return Anthropic(
-            model=model or "claude-3-sonnet-20240229",
+            model=model or "claude-3-5-sonnet-20241022",
             api_key=os.getenv("ANTHROPIC_API_KEY"),
             temperature=0.1
         )
@@ -61,8 +61,6 @@ def get_agent(provider="openai", model=None, index_name="deepseek_ocr_index"):
             ),
         )
     ]
-    
-    from prompts import CONTEXT, TOOL_DESCRIPTION, TOOL_NAME
 
     # Create and return agent
     return ReActAgent(
