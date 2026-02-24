@@ -1,1 +1,0 @@
-# Roland Berger OA
