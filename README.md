@@ -10,7 +10,3 @@ A comprehensive collection of ML/AI engineering resources for technical intervie
 - **rag/**: RAG system implementation with LlamaIndex
 - **summary_notes/**: Algorithm pattern guides (DP, graphs, etc.)
 - **oa/**: Online assessment preparation notes
-
-## Quick Navigation
-
-See the [main README](../README.md) for detailed documentation and setup instructions.
