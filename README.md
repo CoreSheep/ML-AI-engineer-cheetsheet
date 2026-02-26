@@ -8,7 +8,7 @@ A practical cheat sheet for **ML/AI engineering interviews** covering algorithms
 
 This repository contains **5 core modules** to help you prepare for technical interviews:
 
-### 1. 🧠 **Machine Learning Fundamentals**
+### 1. **Machine Learning Fundamentals**
 `ml-basic/`
 
 - 100+ page comprehensive guide covering ML concepts, algorithms, and deep learning
@@ -20,7 +20,7 @@ This repository contains **5 core modules** to help you prepare for technical in
 
 ---
 
-### 2. 💻 **Coding & Algorithms**
+### 2. **Coding & Algorithms**
 Root directory: `LeetCode_blind75_list.md`, `summary_notes/`
 
 - **LeetCode Blind 75** (75/75 complete) with detailed solutions
@@ -31,7 +31,7 @@ Root directory: `LeetCode_blind75_list.md`, `summary_notes/`
 
 ---
 
-### 3. 🐍 **Python Skills**
+### 3. **Python Skills**
 `python/`
 
 - Modern Python patterns: Decorators, dataclasses, type hints
@@ -42,7 +42,7 @@ Root directory: `LeetCode_blind75_list.md`, `summary_notes/`
 
 ---
 
-### 4. 📊 **Pandas & Data Analysis**
+### 4. **Pandas & Data Analysis**
 `pandas/`
 
 - Interactive Jupyter notebook with pandas examples
@@ -53,7 +53,7 @@ Root directory: `LeetCode_blind75_list.md`, `summary_notes/`
 
 ---
 
-### 5. 🤖 **Production RAG System**
+### 5. **Production RAG System**
 `rag/`
 
 - Full RAG (Retrieval-Augmented Generation) implementation
@@ -65,7 +65,7 @@ Root directory: `LeetCode_blind75_list.md`, `summary_notes/`
 
 ---
 
-### 6. 💬 **Behavioral Interview Prep** *(Bonus)*
+### 6. **Behavioral Interview Prep** *(Bonus)*
 `BQ/`
 
 - STAR method framework with examples
