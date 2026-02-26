@@ -137,7 +137,7 @@ streamlit run app.py
 ML Fundamentals:     ████████████████████ 100%
 LeetCode Blind 75:   ████████████████████ 75/75
 Python Proficiency:  ████████████████████ 100%
-RAG System:          ████████████████████ Production-ready
+RAG System:          ████████████████████ llamaindex
 Behavioral Guide:    ████████████████████ 91 questions
 ```
 
